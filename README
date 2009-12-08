@@ -1,4 +1,53 @@
-example.py has complete example of what is implemented right now
+This is an experiment and very much work in progress
 
-And this is mostly just experiment, my Python is not (yet) that good.
-So feel free to fork and contribute :)
+So feel free to fork and contribute.
+
+Usage example (in interactive shell):
+
+Initialize API
+
+>>> from TargetApi import Api
+>>> api = Api.Api('http://api.dailyperfect.com', 'API_KEY_ASSIGNED_TO_YOU');
+
+# add content item
+>>> item = {'keywords': 'python, snake', 'title': 'Python', 'content': 'Python is a programming language that lets you work more quickly and integrate your systems more effectively'}
+>>> api.item_modify('python', item)
+
+# list all content items
+>>> api.item_list()
+
+# detailed information about content item
+>>> api.item_get('python')
+
+# load a person. Before you perform any operationsi
+# where a person participates, you need to load the person first
+>>> api.person_load('p1')
+
+# create a new person
+>>> api.person_load('testperson')
+>>> data = {'name': 'John Doe', 'interests': 'cooking, Python'}
+>>> api.person_modify(data)
+
+# get a list of all persons
+>>> api.person_list()
+
+# recommendations for person
+>>> api.recommendations()
+
+# when you like a content item
+>>> api.like('python')
+
+# when you dislike a content item
+>>> api.dislike('php')
+
+# see all ratings given by currently loaded person
+>>> api.ratings()
+
+# delete content item
+api.item_delete('python')
+
+# delete currenly loadedperson
+api.person_delete()
+
+
+
